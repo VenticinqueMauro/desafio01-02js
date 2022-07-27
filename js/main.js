@@ -11,6 +11,7 @@ let cantidad = 0;
 let descuento = 0;
 let formaPago = "";
 let compra = 0;
+let compraConDesc = 0;  
 let cuotas = 0;
 let cuotaTarjeta = 0;
 let confirmar = "";
@@ -65,7 +66,7 @@ color = prompt("Elige tu color favorito:\nblanco\nnegro\nrojo\nrosa");
 
 while (color != "blanco" || color != "negro" || color != "rojo" || color != "rosa"){
     if (color == "blanco" || color == "negro" || color == "rojo" || color == "rosa") {
-        alert("Estupendo, elegiste un hermoso color!");
+        alert("Estupendo, elegiste color: " + color);
         break;
     }
     alert("Lo siento, no contamos con ese color. Intenta nuevamente");
@@ -101,9 +102,9 @@ formaPago = prompt("Selecciona forma de pago:\ndebito\ncredito")
 
 while( formaPago != "debito" || formaPago != "credito") {
     if (formaPago == "debito"){
-        descuento = (compra * 0.15);
+        descuento = (compra * 0.10);
         compraConDesc = (compra - descuento);
-        alert("se aplicara un 15% sobre tu monto final. El descuento es de $" + descuento + " ,tu total a pagar es de $" + compraConDesc);
+        alert("Con debito tienes 10% de descuento:\nValor: $" + compra + "\nDescuento: $" + descuento + "\nTotal: $" + compraConDesc);
         break;
     } else if (formaPago == "credito") {
         cuotas = parseInt(prompt("Selecciona cantidad de cuotas:\n3: +10% Interes\n6: +15% Interes\n12: +20% Interes"));
@@ -144,15 +145,16 @@ class calzado {
         this.cuotaTarjeta = cuotas + " de $" + cuotaTarjeta,
         this.descuento = descuento,
         this.vendido = false,
-        this.fecha = fecha
+        this.fecha = fecha,
+        this.formaPago = formaPago
     }
     ventaMayorista(){
-        if (compra >= 30000) {
-            alert("Recibiras un descuento extra del 20% por superar los $30.000 en tu compra!");
-            descuento = compra * 0.20;
-            compra = compra - descuento;
-            alert("Tu importe Final es de $" + compra)
-            return compra;
+        if (compraConDesc >= 30000) {
+            alert("Descuento Extra del 10% por superar los $30.000 en tu compra!");
+            descuento = (compraConDesc * 0.10);
+            compraConDesc = compraConDesc - descuento;
+            alert("Importe Final: $" + compraConDesc)
+            return compraConDesc;
         } 
     }
     confirmarCompra(){
@@ -181,9 +183,9 @@ cliente1.confirmarCompra(); // Metodo para confirmacion de compra.
 console.log(cliente1);
 console.log(ventas.length);
 
-mostrarCompra = () => {   
-    if (cliente1.vendido == true) {                        // FUNCION PARA MOSTRAR DATOS DE LA COMPRA
-        alert("Detalle de Compra:\nNombre: " + nombre + "\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
+mostrarCompra = () => {     // FUNCION PARA MOSTRAR DATOS DE LA COMPRA
+    if (cliente1.vendido == true) {                        
+        alert(nombre + " Aqui tienes el detalle de tu Compra:\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nPrecio Final: $" + compraConDesc + "\nForma de pago: " + formaPago + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
         console.log("Detalle de la compra:\n")
         for (prop in cliente1) {
         console.log(prop + " " + cliente1[prop]);
