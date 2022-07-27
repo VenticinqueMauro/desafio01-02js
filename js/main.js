@@ -182,6 +182,7 @@ console.log(ventas.length);
 
 mostrarCompra = () => {   
     if (cliente1.vendido == true) {                        // FUNCION PARA MOSTRAR DATOS DE LA COMPRA
+        alert("Detalle de Compra:\nNombre: " + nombre + "\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: " + compra + "\nDescuento: " + descuento + "\nCuotaTarjeta: " + cuotaTarjeta)
         console.log("Detalle de la compra:\n")
         for (prop in cliente1) {
         console.log(prop + " " + cliente1[prop]);
@@ -191,7 +192,7 @@ mostrarCompra = () => {
 
 mostrarCompra();
 
-alert("Detalle de Compra:\nNombre: " + nombre + "\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: " + compra + "\nDescuento: " + descuento + "\nCuotaTarjeta: " + cuotaTarjeta)
+
 
 
 
