@@ -11,6 +11,7 @@ let cantidad = 0;
 let descuento = 0;
 let formaPago = "";
 let compra = 0;
+let cuotas = 0;
 let cuotaTarjeta = 0;
 let confirmar = "";
 let fecha = new Date();
@@ -105,18 +106,18 @@ while( formaPago != "debito" || formaPago != "credito") {
         alert("se aplicara un 15% sobre tu monto final. El descuento es de $" + descuento + " ,tu total a pagar es de $" + compraConDesc);
         break;
     } else if (formaPago == "credito") {
-        let cuotas = parseInt(prompt("Selecciona cantidad de cuotas: 3 / 6 / 12"));
+        cuotas = parseInt(prompt("Selecciona cantidad de cuotas:\n3: +10% Interes\n6: +15% Interes\n12: +20% Interes"));
         if (cuotas == 3) {
-            cuotaTarjeta = (compra / 3) 
-            alert("Pagaras 3 cuotas sin interes de: $" + cuotaTarjeta);
+            cuotaTarjeta = ((compra * 1.10) / 3 ).toFixed(2)
+            alert("Pagaras 3 cuotas de: $" + cuotaTarjeta);
             break;
         } else if (cuotas == 6) {
-            cuotaTarjeta = (compra / 6) 
-            alert("Pagaras 6 cuotas sin interes de: $" + cuotaTarjeta);
+            cuotaTarjeta = ((compra * 1.15) / 6 ).toFixed(2)
+            alert("Pagaras 6 cuotas de: $" + cuotaTarjeta);
             break
         } else if (cuotas == 12) {
-            cuotaTarjeta = (compra / 12) 
-            alert("Pagaras 12 cuotas sin interes de: $" + cuotaTarjeta);
+            cuotaTarjeta = ((compra * 1.20) / 12).toFixed(2)
+            alert("Pagaras 12 cuotas de: $" + cuotaTarjeta);
             break
         } else {
             alert("No contamos con esa cantidad de cuotas.")
@@ -140,7 +141,7 @@ class calzado {
         this.numero = numero,
         this.cantidad = cantidad,
         this.compra = precioTotal(),
-        this.cuotaTarjeta = cuotaTarjeta,
+        this.cuotaTarjeta = cuotas + " de $" + cuotaTarjeta,
         this.descuento = descuento,
         this.vendido = false,
         this.fecha = fecha
@@ -155,13 +156,13 @@ class calzado {
         } 
     }
     confirmarCompra(){
-        confirmar = prompt("Desea anular la compra?\nSI\nNO").toUpperCase();
-        if (confirmar == "SI"){
+        confirmar = prompt("Desea confirmar la compra?\nSI\nNO").toUpperCase();
+        if (confirmar == "NO"){
             alert("Tu compra fue cancelada con exito!");
-        } else if ( confirmar == "NO" ) {
+        } else if ( confirmar == "SI" ) {
             this.vendido = true;
             this.fecha = new Date();
-            alert("Gracias, te esperamos la proxima!")
+            alert("Compra Confirmada!")
             ventas.push(Object);     // Al confirmar agrego objeto al array `ventas`
         } else {
             alert("Ocurrio un error, compra cancelada.")
@@ -182,7 +183,7 @@ console.log(ventas.length);
 
 mostrarCompra = () => {   
     if (cliente1.vendido == true) {                        // FUNCION PARA MOSTRAR DATOS DE LA COMPRA
-        alert("Detalle de Compra:\nNombre: " + nombre + "\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: " + compra + "\nDescuento: " + descuento + "\nCuotaTarjeta: " + cuotaTarjeta)
+        alert("Detalle de Compra:\nNombre: " + nombre + "\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
         console.log("Detalle de la compra:\n")
         for (prop in cliente1) {
         console.log(prop + " " + cliente1[prop]);
