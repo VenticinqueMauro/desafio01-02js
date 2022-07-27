@@ -96,15 +96,15 @@ const precioTotal = () => {
 precioTotal();
 
 
-formaPago = prompt("Selecciona forma de pago:\ndebito\ntarjeta")
+formaPago = prompt("Selecciona forma de pago:\ndebito\ncredito")
 
-while( formaPago != "debito" || formaPago != "tarjeta") {
+while( formaPago != "debito" || formaPago != "credito") {
     if (formaPago == "debito"){
         descuento = (compra * 0.15);
         compraConDesc = (compra - descuento);
         alert("se aplicara un 15% sobre tu monto final. El descuento es de $" + descuento + " ,tu total a pagar es de $" + compraConDesc);
         break;
-    } else if (formaPago == "tarjeta") {
+    } else if (formaPago == "credito") {
         let cuotas = parseInt(prompt("Selecciona cantidad de cuotas: 3 / 6 / 12"));
         if (cuotas == 3) {
             cuotaTarjeta = (compra / 3) 
@@ -123,7 +123,7 @@ while( formaPago != "debito" || formaPago != "tarjeta") {
         }
     } else {
         alert("Metodo de pago erroneo, intenta nuevamente, Gracias.");
-        formaPago = prompt("Selecciona forma de pago:\ndebito\ntarjeta");
+        formaPago = prompt("Selecciona forma de pago:\ndebito\ncredito");
     }
 }
 
