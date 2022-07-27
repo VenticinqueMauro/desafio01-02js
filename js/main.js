@@ -46,14 +46,14 @@ const tipo_calzado = () => {
 
 tipo_calzado();
 
-alert("El precio de tus " + tipo + " es de $" + precio);
+alert("El precio por unidad de " + tipo + " es de $" + precio);
 
 
 numero = prompt("Elige tu numero:\n36\n37\n38\n39\n40");
 
 while (numero != "36" || numero != "37" || numero != "38" || numero != "39" || numero != "40") {
     if (numero >= "36" && numero <= "40") {
-        alert("Genial! contamos con ese numero!")
+        alert("Genial! Seleccionaste Numero: " + numero)
         break;
     } 
     alert("Lo siento, no contamos con ese numero")
