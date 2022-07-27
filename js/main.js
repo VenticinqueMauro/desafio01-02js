@@ -13,6 +13,7 @@ let formaPago = "";
 let compra = 0;
 let cuotaTarjeta = 0;
 let confirmar = "";
+let fecha = new Date();
 
 
 
@@ -25,16 +26,21 @@ alert("Bienvenido/a " + nombre + ", elige algun tipo de los siguientes calzados:
 
 const tipo_calzado = () => {
     tipo = prompt("zapatillas\nsandalias\nbotas").toLowerCase();
+    while ( tipo != "zapatillas" || tipo != "sandalias" || tipo != "botas") {
         if (tipo == "zapatillas") {
             precio = 5900;
+            break;
         } else if (tipo == "sandalias") {
             precio = 3900;
+            break;
         } else if (tipo == "botas") {
             precio = 6600;
+            break;
         } else {
             alert("Perdona, ese tipo no esta en la lista, intenta de nuevo");
             tipo = prompt("zapatillas, sandalias, botas").toLowerCase();
         }
+    }
     return tipo;
 } 
 
@@ -65,10 +71,21 @@ while (color != "blanco" || color != "negro" || color != "rojo" || color != "ros
     color = prompt("Elige tu color favorito:\nblanco\nnegro\nrojo\nrosa");
 }
 
-const cantidadPares = () => {
-    cantidad = parseInt(prompt("Selecciona la cantidad de pares que deseas: "));
-    return cantidad; 
+
+cantidadDePares = () => {
+    cantidad = parseInt(prompt("Seleccione la cantidad de pares que desea: ")) 
+    while( Number.isNaN(cantidad) )  {
+        if (Number.isInteger(cantidad)) {
+            return cantidad;
+        } else {
+            alert("Por favor ingresa un valor numerico correcto.")
+            cantidad = parseInt(prompt("Seleccione la cantidad de pares que desea: "))
+        }
+    }
 }
+
+
+cantidadDePares();
 
 const precioTotal = () => {
     compra = cantidad * precio;
@@ -76,7 +93,6 @@ const precioTotal = () => {
 }
 
 
-cantidadPares();
 precioTotal();
 
 
@@ -104,7 +120,6 @@ while( formaPago != "efectivo" || formaPago != "tarjeta") {
             break
         } else {
             alert("No contamos con esa cantidad de cuotas.")
-            break;
         }
     } else {
         alert("Metodo de pago erroneo, intenta nuevamente, Gracias.");
@@ -127,7 +142,8 @@ class calzado {
         this.compra = precioTotal(),
         this.cuotaTarjeta = cuotaTarjeta,
         this.descuento = descuento,
-        this.vendido = false;
+        this.vendido = false,
+        this.fecha = fecha
     }
     ventaMayorista(){
         if (compra >= 30000) {
@@ -144,6 +160,7 @@ class calzado {
             alert("Tu compra fue cancelada con exito!");
         } else if ( confirmar == "NO" ) {
             this.vendido = true;
+            this.fecha = new Date();
             alert("Gracias, te esperamos la proxima!")
             ventas.push(Object);     // Al confirmar agrego objeto al array `ventas`
         } else {
