@@ -184,8 +184,12 @@ console.log(cliente1);
 console.log(ventas.length);
 
 mostrarCompra = () => {     // FUNCION PARA MOSTRAR DATOS DE LA COMPRA
-    if (cliente1.vendido == true) {                        
-        alert(nombre + " Aqui tienes el detalle de tu Compra:\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nPrecio Final: $" + compraConDesc + "\nForma de pago: " + formaPago + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
+    if (cliente1.vendido == true) { 
+        if (formaPago == "debito") {                       
+            alert(nombre + " Aqui tienes el detalle de tu Compra:\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nPrecio Final: $" + compraConDesc + "\nForma de pago: " + formaPago + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
+        } else if ( formaPago == "credito") {
+            alert(nombre + " Aqui tienes el detalle de tu Compra:\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nPrecio: $" + compra + "\nForma de pago: " + formaPago + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
+        }
         console.log("Detalle de la compra:\n")
         for (prop in cliente1) {
         console.log(prop + " " + cliente1[prop]);
