@@ -27,7 +27,7 @@ alert("Bienvenido/a " + nombre + ", elige algun tipo de los siguientes calzados:
 
 
 const tipo_calzado = () => {
-    tipo = prompt("zapatillas\nsandalias\nbotas").toLowerCase();
+    tipo = prompt("zapatillas\nsandalias\nbotas\nstilettos\nzuecos").toLowerCase();
     while ( tipo != "zapatillas" || tipo != "sandalias" || tipo != "botas") {
         if (tipo == "zapatillas") {
             precio = 5900;
@@ -38,9 +38,15 @@ const tipo_calzado = () => {
         } else if (tipo == "botas") {
             precio = 6600;
             break;
+        } else if (tipo =="stilettos") {
+            precio = 4700;
+            break;
+        } else if (tipo == "zuecos") {
+            precio = 4500;
+            break;
         } else {
             alert("Perdona, ese tipo no esta en la lista, intenta de nuevo");
-            tipo = prompt("zapatillas, sandalias, botas").toLowerCase();
+            tipo = prompt("zapatillas, sandalias, botas, stilettos, zuecos").toLowerCase();
         }
     }
     return tipo;
@@ -51,26 +57,26 @@ tipo_calzado();
 alert("El precio por unidad de " + tipo + " es de $" + precio);
 
 
-numero = prompt("Elige tu numero:\n36\n37\n38\n39\n40");
+numero = prompt("Elige tu numero:\n35\n36\n37\n38\n39\n40");
 
-while (numero != "36" || numero != "37" || numero != "38" || numero != "39" || numero != "40") {
-    if (numero >= "36" && numero <= "40") {
+while (numero != "35" || numero != "36" || numero != "37" || numero != "38" || numero != "39" || numero != "40") {
+    if (numero >= "35" && numero <= "40") {
         alert("Genial! Seleccionaste Numero: " + numero)
         break;
     } 
     alert("Lo siento, no contamos con ese numero")
-    numero = prompt("Elige tu numero:\n36\n37\n38\n39\n40"); 
+    numero = prompt("Elige tu numero:\n35\n36\n37\n38\n39\n40"); 
 }
 
-color = prompt("Elige tu color favorito:\nblanco\nnegro\nrojo\nrosa");
+color = prompt("Elige tu color favorito:\nblanco\nnegro\nrojo\nrosa\nazul");
 
-while (color != "blanco" || color != "negro" || color != "rojo" || color != "rosa"){
-    if (color == "blanco" || color == "negro" || color == "rojo" || color == "rosa") {
+while (color != "azul" || color != "blanco" || color != "negro" || color != "rojo" || color != "rosa"){
+    if (color == "blanco" || color == "negro" || color == "rojo" || color == "rosa" || color == "azul" ) {
         alert("Estupendo, elegiste color: " + color);
         break;
     }
     alert("Lo siento, no contamos con ese color. Intenta nuevamente");
-    color = prompt("Elige tu color favorito:\nblanco\nnegro\nrojo\nrosa");
+    color = prompt("Elige tu color favorito:\nblanco\nnegro\nrojo\nrosa\nazul");
 }
 
 
