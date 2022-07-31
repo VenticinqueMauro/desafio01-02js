@@ -211,19 +211,24 @@ mostrarCompra();
 const datosClientes = [
     {nombre: "Beatriz", edad: 32, totalComprado: 34200},
     {nombre: "Susana", edad: 22, totalComprado: 9540},
-    {nombre: "Marta", edad: 32, totalComprado: 27200},
-    {nombre: "Noelia", edad: 32, totalComprado: 54870},
-    {nombre: "Daiana", edad: 32, totalComprado: 12000},
-    {nombre: "Veronica", edad: 32, totalComprado: 5900},
-    {nombre: "Camila", edad: 32, totalComprado: 26400},
+    {nombre: "Marta", edad: 18, totalComprado: 27200},
+    {nombre: "Noelia", edad: 28, totalComprado: 54870},
+    {nombre: "Daiana", edad: 62, totalComprado: 12000},
+    {nombre: "Veronica", edad: 55, totalComprado: 5900},
+    {nombre: "Camila", edad: 46, totalComprado: 26400},
 ]
 
-// FUNCION QUE RETORNA TOTAL DE COMPRA SUPERIOR A 25000
+// METODO QUE RETORNA PRIMERA COMPRA SUPERIOR A 25000
 
-const buscarPorMontoDeCompra = (x) => x.totalComprado > 25000;
+const buscar = (x) => x.totalComprado > 10000;
 
-console.log(datosClientes.find(buscarPorMontoDeCompra));
+console.log(datosClientes.find(buscar));
 
+// METODO PARA FILTRAR POR NOMBRE
+
+const filtrar = (x) => x.nombre == "Susana";
+
+console.log(datosClientes.filter(filtrar))
 
 
 
