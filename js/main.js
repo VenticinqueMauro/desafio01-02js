@@ -21,7 +21,7 @@ let fecha = new Date();
 
 alert("Bienvenido a Ene Calzados");
 
-nombre = prompt("A continuacion ingrese su nombre porfavor: ");
+nombre = prompt("A continuacion ingrese su nombre porfavor: ").toUpperCase();
 
 alert("Bienvenido/a " + nombre + ", elige algun tipo de los siguientes calzados: ");
 
@@ -179,31 +179,51 @@ class calzado {
 }
 
 
-let cliente1 = new calzado (nombre, tipo, numero, cantidad, descuento);  // Creo un objeto 
+let compra1 = new calzado (nombre, tipo, numero, cantidad, descuento);  // Creo un objeto 
 
 
-cliente1.ventaMayorista(); // Metodo para aplicar descuento segun condicion. 
+compra1.ventaMayorista(); // Metodo para aplicar descuento segun condicion. 
 
-cliente1.confirmarCompra(); // Metodo para confirmacion de compra.
+compra1.confirmarCompra(); // Metodo para confirmacion de compra.
 
-console.log(cliente1);
+console.log(compra1);
 console.log(ventas.length);
 
 mostrarCompra = () => {     // FUNCION PARA MOSTRAR DATOS DE LA COMPRA
-    if (cliente1.vendido == true) { 
+    if (compra1.vendido == true) { 
         if (formaPago == "debito") {                       
             alert(nombre + " Aqui tienes el detalle de tu Compra:\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nPrecio Final: $" + compraConDesc + "\nForma de pago: " + formaPago + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
         } else if ( formaPago == "credito") {
             alert(nombre + " Aqui tienes el detalle de tu Compra:\nTipo: " + tipo + "\nNumero: " + numero + "\nColor: " + color + "\nCantidad: " + cantidad + "\nValor: $" + compra + "\nDescuento: $" + descuento + "\nPrecio: $" + compra + "\nForma de pago: " + formaPago + "\nCuotaTarjeta: " + cuotas + " de $" + cuotaTarjeta)
         }
         console.log("Detalle de la compra:\n")
-        for (prop in cliente1) {
-        console.log(prop + " " + cliente1[prop]);
+        for (prop in compra1) {
+        console.log(prop + " " + compra1[prop]);
         }
     } 
 }
 
 mostrarCompra();
+
+
+// EJEMPLO DE BUSQUEDA EN ARRAY
+
+const datosClientes = [
+    {nombre: "Beatriz", edad: 32, totalComprado: 34200},
+    {nombre: "Susana", edad: 22, totalComprado: 9540},
+    {nombre: "Marta", edad: 32, totalComprado: 27200},
+    {nombre: "Noelia", edad: 32, totalComprado: 54870},
+    {nombre: "Daiana", edad: 32, totalComprado: 12000},
+    {nombre: "Veronica", edad: 32, totalComprado: 5900},
+    {nombre: "Camila", edad: 32, totalComprado: 26400},
+]
+
+// FUNCION QUE RETORNA TOTAL DE COMPRA SUPERIOR A 25000
+
+const buscarPorMontoDeCompra = (x) => x.totalComprado > 25000;
+
+console.log(datosClientes.find(buscarPorMontoDeCompra));
+
 
 
 
